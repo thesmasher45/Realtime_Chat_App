@@ -34,6 +34,12 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+app._router.stack.forEach((layer) => {
+  if (layer.route && layer.route.path) {
+    console.log('Route:', layer.route.path);
+  }
+});
+
 server.listen(PORT, () => {
   console.log("server is running on PORT:" + PORT);
   connectDB();
